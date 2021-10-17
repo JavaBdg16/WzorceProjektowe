@@ -6,22 +6,9 @@ import java.util.Observable;
 
 public class StacjaPogodowa extends Observable {
 
-//    private List<Obserwator> obserwatorList = new ArrayList<>();
     private float temp, wilgotnosc, cisnienie;
 
-//    @Override
-//    public void zarejestrujObserwatora(Obserwator obserwator) {
-//        obserwatorList.add(obserwator);
-//    }
-//
-//    @Override
-//    public void usunObserwatora(Obserwator obserwator) {
-//        obserwatorList.remove(obserwator);
-//    }
-//
     public void powiadomObserwatorow() {
-//        obserwatorList.forEach(o -> o.aktualizacja(temp, wilgotnosc, cisnienie));
-
         setChanged();
         notifyObservers();
     }
@@ -32,5 +19,17 @@ public class StacjaPogodowa extends Observable {
         this.cisnienie = cisnienie;
 
         powiadomObserwatorow();
+    }
+
+    public float getTemp() {
+        return temp;
+    }
+
+    public float getWilgotnosc() {
+        return wilgotnosc;
+    }
+
+    public float getCisnienie() {
+        return cisnienie;
     }
 }

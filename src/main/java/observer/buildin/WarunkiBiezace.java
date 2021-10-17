@@ -5,22 +5,7 @@ import java.util.Observer;
 
 public class WarunkiBiezace implements Observer {
 
-//    private final Podmiot podmiot;
     private float temp, wilgotnosc, cisnienie;
-
-//    public WarunkiBiezace(Podmiot podmiot) {
-//        this.podmiot = podmiot;
-//        this.podmiot.zarejestrujObserwatora(this);
-//    }
-
-//    @Override
-//    public void aktualizacja(float temp, float wilgotnosc, float cisnienie) {
-//        this.temp = temp;
-//        this.wilgotnosc = wilgotnosc;
-//        this.cisnienie = cisnienie;
-//
-//        wyswietl();
-//    }
 
     private void wyswietl() {
         System.out.println("Warunki bieżące:");
@@ -32,7 +17,13 @@ public class WarunkiBiezace implements Observer {
     @Override
     public void update(Observable observable, Object o) {
         if (observable instanceof StacjaPogodowa) {
-            System.out.println(getClass().getSimpleName());
-        }
+            StacjaPogodowa stacjaPogodowa = (StacjaPogodowa) observable;
+
+            this.temp = stacjaPogodowa.getTemp();
+            this.wilgotnosc = stacjaPogodowa.getWilgotnosc();
+            this.cisnienie = stacjaPogodowa.getCisnienie();
+
+            wyswietl();
+         }
     }
 }
